@@ -4,12 +4,6 @@ apiVersion: {{ .Values.ingress.apiversion }}
 kind: Ingress
 metadata:
   name: ph-ee-connector-ams-mifos
-  labels:
-    app: ph-ee-connector-ams-mifos
-    release: {{ .Release.Name | quote }}
-    {{- range $key, $value := .Values.labels }}
-    {{ $key }}: {{ $value | quote }}
-    {{- end }}
 {{- if .Values.ingress.annotations }}
   annotations:
 {{ toYaml .Values.ingress.annotations | indent 4 }}
