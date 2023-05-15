@@ -1,4 +1,4 @@
-{{- if .Values.ingress.enabled -}}
+{{- if .Values.ingress.enabled }}
 
 apiVersion: {{ .Values.ingress.apiversion }}
 kind: Ingress
@@ -10,6 +10,7 @@ metadata:
     {{- range $key, $value := .Values.labels }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
+{{- with .Values.ingress.annotations }}
   annotations:
 {{- if .Values.ingress.annotations }}
 {{ toYaml .Values.ingress.annotations | indent 4 }}
@@ -26,15 +27,15 @@ spec:
 {{- end }}    
   rules:
   {{- range .Values.ingress.hosts }}
-  - host: "{{ .Values.hostname }}"
-    http:
-      paths:
-      - path: "{{ .Values.ingress.path }}"
-        pathType: Prefix
-        backend:
+    - host: "{{ .Values.hostname }}"
+      http:
+        paths:
+        - path: "{{ .Values.ingress.path }}"
+          pathType: Prefix
+          backend:
 {{- if .Values.ingress.backend }}
 {{ toYaml .Values.ingress.backend | indent 14 }}
 {{- end }} 
   {{- end }}
-
+  
 {{- end }}
