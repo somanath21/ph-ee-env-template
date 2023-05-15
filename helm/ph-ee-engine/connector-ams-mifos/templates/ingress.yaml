@@ -31,9 +31,9 @@ spec:
         paths:
         - path: "{{ .Values.ingress.path }}"
           pathType: Prefix
+{{- if .Values.ingress.backend }}          
           backend:
-{{- if .Values.ingress.backend }}
-{{ toYaml .Values.ingress.backend | indent 14 }}
+{{ toYaml .Values.ingress.backend | indent 12 }}
 {{- end }} 
   {{- end }}
   
