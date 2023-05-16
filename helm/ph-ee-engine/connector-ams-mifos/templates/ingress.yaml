@@ -28,6 +28,5 @@ spec:
           backend:
 {{ toYaml .Values.ingress.backend | indent 12 }}
 {{- end }} 
-  {{- end }}
   
 {{- end }}
