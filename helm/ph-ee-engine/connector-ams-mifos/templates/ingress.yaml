@@ -19,7 +19,6 @@ spec:
     secretName: "{{ .Values.tls }}"
 {{- end }}    
   rules:
-  {{- range .Values.ingress.hosts }}
     - host: "{{ .Values.hostname }}"
       http:
         paths:
