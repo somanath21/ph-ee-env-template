@@ -1,26 +1,32 @@
 {{- if .Values.ingress.enabled }}
+
 apiVersion: {{ .Values.ingress.apiversion }}
 kind: Ingress
 metadata:
   name: ph-ee-operations-web
-  annotations:
 {{- if .Values.ingress.annotations }}
+  annotations:
 {{ toYaml .Values.ingress.annotations | indent 4 }}
 {{- end }}
 spec:
-  rules:
-    - host: "{{ .Values.hostname }}"
-      http:
-        paths:
-          - path: "{{ .Values.ingress.path }}"
-            pathType: Prefix
-            backend:
-{{- if .Values.ingress.backend }}
-{{ toYaml .Values.ingress.backend | indent 14 }}
-{{- end }}
-
+  {{- if .Values.ingress.className }}
+  ingressClassName: {{ .Values.ingress.className | quote }}
+  {{- end }}
+{{- if .Values.ingress.tls }}
   tls:
   - hosts:
     - "{{ .Values.wildcardhostname }}"
     secretName: "{{ .Values.tls }}"
+{{- end }}    
+  rules:
+    - host: "{{ .Values.hostname }}"
+      http:
+        paths:
+        - path: "{{ .Values.ingress.path }}"
+          pathType: Prefix
+{{- if .Values.ingress.backend }}          
+          backend:
+{{ toYaml .Values.ingress.backend | indent 12 }}
+{{- end }} 
+  
 {{- end }}
