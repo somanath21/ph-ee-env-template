@@ -14,8 +14,8 @@ spec:
   {{- end }}
 {{- if .Values.ingress.tls }}
   tls:
-  - hosts:
-    - "{{ .Values.wildcardhostname }}"
+    hosts:
+      "{{ .Values.wildcardhostname }}"
     secretName: "{{ .Values.tls }}"
 {{- end }}    
   rules:
