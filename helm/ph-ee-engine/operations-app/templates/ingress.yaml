@@ -35,19 +35,19 @@ metadata:
 {{- end }}
 spec:
   rules:
-    - host: "{{ .Values.hostname }}"
-      http:
-        paths:
-          - path: /identity
-            pathType: Prefix
-            backend:
+    host: "{{ .Values.hostname }}"
+    http:
+      paths:
+        path: /identity
+        pathType: Prefix
+        backend:
 {{- if .Values.ingress.backend }}
 {{ toYaml .Values.ingress.backend | indent 14 }}
 {{- end }} 
 
   tls:
-  - hosts:
-    - "{{ .Values.wildcardhostname }}"
+    hosts:
+      "{{ .Values.wildcardhostname }}"
     secretName: "{{ .Values.tls }}"
 
 {{- end }}

@@ -9,20 +9,20 @@ metadata:
 {{- end }}
 spec:
   rules:
-    - host: "{{ .Values.hostname }}"
-      http:
-        paths:
-        - path: "{{ .Values.ingress.path }}"
-          pathType: Prefix
-          backend:
+    host: "{{ .Values.hostname }}"
+    http:
+      paths:
+        path: "{{ .Values.ingress.path }}"
+        pathType: Prefix
+        backend:
 {{- if .Values.ingress.backend }}
 {{ toYaml .Values.ingress.backend | indent 14 }}
 {{- end }}
 
   tls:
-    - hosts:
-      - "{{ .Values.wildcardhostname }}"
-      secretName: "{{ .Values.tls }}"
+    hosts:
+      "{{ .Values.wildcardhostname }}"
+    secretName: "{{ .Values.tls }}"
 {{- end }}
 ---
 {{- if .Values.ingress.enabled }}
@@ -36,18 +36,18 @@ metadata:
 {{- end }}
 spec:
   rules:
-    - host: "{{ .Values.stub_hostname }}"
-      http:
-        paths:
-        - path: "{{ .Values.ingress.path }}"
-          pathType: Prefix
-          backend:
+    host: "{{ .Values.stub_hostname }}"
+    http:
+      paths:
+        path: "{{ .Values.ingress.path }}"
+        pathType: Prefix
+        backend:
 {{- if .Values.ingress.backend }}
 {{ toYaml .Values.ingress.stub_backend | indent 14 }}
 {{- end }}
 
   tls:
-    - hosts:
-      - "{{ .Values.wildcardhostname }}"
-      secretName: "{{ .Values.tls }}"
+    hosts:
+      "{{ .Values.wildcardhostname }}"
+    secretName: "{{ .Values.tls }}"
 {{- end }}
