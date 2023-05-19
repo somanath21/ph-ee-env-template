@@ -21,10 +21,10 @@ spec:
   rules:
   {{- range $key, $value := .Values.global.ingress }}
   {{- range $value.hosts }}
-  - host: "{{ .Values.hostname }}"
+    host: "{{ .Values.hostname }}"
     http:
       paths:
-      - path: "{{ .Values.ingress.path }}"
+        path: "{{ .Values.ingress.path }}"
         pathType: Prefix
 {{- if .Values.ingress.backend }}          
         backend:
