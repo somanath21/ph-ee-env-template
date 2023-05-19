@@ -10,15 +10,17 @@ metadata:
 
 spec:
   rules:
-    - host: "{{ .Values.hostname }}"
-      http:
-        paths:
-        - path: "{{ .Values.ingress.path }}"
-          pathType: Prefix
-          backend:
+  {{- range .Values.ingress.hosts }}
+    host: "{{ .Values.hostname }}"
+    http:
+      paths:
+        path: "{{ .Values.ingress.path }}"
+        pathType: Prefix
+        backend:
 {{- if .Values.ingress.backend }}
 {{ toYaml .Values.ingress.backend | indent 14 }}
 {{- end }}
+  {{- end }}
 
   tls:
   - hosts:

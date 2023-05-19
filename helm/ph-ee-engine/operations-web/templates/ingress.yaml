@@ -19,14 +19,16 @@ spec:
     secretName: "{{ .Values.tls }}"
 {{- end }}    
   rules:
-    - host: "{{ .Values.hostname }}"
-      http:
-        paths:
-        - path: "{{ .Values.ingress.path }}"
-          pathType: Prefix
+  {{- range .Values.ingress.hosts }}
+    host: "{{ .Values.hostname }}"
+    http:
+      paths:
+      - path: "{{ .Values.ingress.path }}"
+        pathType: Prefix
 {{- if .Values.ingress.backend }}          
-          backend:
+        backend:
 {{ toYaml .Values.ingress.backend | indent 12 }}
 {{- end }} 
+  {{- end }}
   
 {{- end }}
