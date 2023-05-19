@@ -31,9 +31,11 @@ spec:
     http:
       paths:
       - path: "{{ .Values.ingress.path }}"
-        pathType: Prefix
-  {{- end }}      
+        pathType: Prefix     
         backend:
 {{- if .Values.ingress.backend }}
 {{ toYaml .Values.ingress.backend | indent 14 }}
+{{- end }} 
+  {{- end }} 
+{{- end }} 
 {{- end }} 
