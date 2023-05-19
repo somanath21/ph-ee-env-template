@@ -40,8 +40,8 @@ ingress:
     nginx.ingress.kubernetes.io/cors-allow-methods: PUT, GET, POST, OPTIONS, DELETE, PATCH
     nginx.ingress.kubernetes.io/enable-cors: 'true'
   tls:
-  - hosts: "ops-bk.sandbox.mifos.io"
-  - secretName: sandbox-secret
+    hosts: "ops-bk.sandbox.mifos.io"
+    secretName: sandbox-secret
   path: "/"
   backend:
     service:
