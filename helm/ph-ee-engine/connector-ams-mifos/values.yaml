@@ -32,16 +32,12 @@ wildcardhostname: amsmifos.sandbox.mifos.io
 ingress:
   apiversion: networking.k8s.io/v1
   enabled: true
-  className: ""
-  hostname: ""
   annotations:
     kubernetes.io/ingress.class: "nginx"
   tls:
-    hosts: "amsmifos.sandbox.mifos.io"
-    secretName: sandbox-secret
-  hosts: amsmifos.sandbox.mifos.io
+  - hosts: "amsmifos.sandbox.mifos.io"
+  - secretName: sandbox-secret
   path: "/"
-  pathType: Prefix
   backend:
     service:
       name: ph-ee-connector-ams-mifos

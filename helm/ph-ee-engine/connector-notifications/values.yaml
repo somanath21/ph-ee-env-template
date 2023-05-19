@@ -33,8 +33,8 @@ ingress:
   annotations:
     kubernetes.io/ingress.class: "nginx"
   tls:
-    hosts: "notifications.sandbox.mifos.io"
-    secretName: sandbox-secret
+  - hosts: "notifications.sandbox.mifos.io"
+  - secretName: sandbox-secret
   path: "/"
   backend:
     service:
