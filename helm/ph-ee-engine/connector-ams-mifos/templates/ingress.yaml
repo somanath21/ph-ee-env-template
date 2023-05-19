@@ -10,9 +10,9 @@ metadata:
     {{- range $key, $value := .Values.labels }}
     {{ $key }}: {{ $value | quote }}
     {{- end }}
-{{- with .Values.ingress.annotations }}
-  annotations:
+
 {{- if .Values.ingress.annotations }}
+  annotations:
 {{ toYaml .Values.ingress.annotations | indent 4 }}
 {{- end }}
 spec:
@@ -37,5 +37,5 @@ spec:
 {{ toYaml .Values.ingress.backend | indent 14 }}
 {{- end }} 
   {{- end }} 
-{{- end }} 
+
 {{- end }} 
