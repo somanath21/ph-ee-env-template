@@ -56,7 +56,7 @@ wildcardhostname: bulk-connector.sandbox.mifos.io
 ingress:
   apiversion: networking.k8s.io/v1
   enabled: true
-  className: "kong"
+  className: ""
   annotations: 
     kubernetes.io/ingress.class: "nginx"
     konghq.com/plugins: cors
