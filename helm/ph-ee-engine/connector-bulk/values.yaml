@@ -63,16 +63,16 @@ ingress:
   tls:
   - hosts: "bulk-connector.sandbox.mifos.io"
   - secretName: sandbox-secret
-  rules:
-    - host: 
-      http:
-        paths:
-          - path: /
-            backend:
-              service:
-                Name: ph-ee-connector-bulk
-                Port: 
-                  number: 80 
+  pathtype: prefix
+  hosts:
+    - host: bulk-connector.sandbox.mifos.io
+      paths:
+        - path: /
+  backend:
+    service:
+      Name: ph-ee-connector-bulk
+      Port: 
+        number: 80 
 deployment:
   apiVersion: "apps/v1"
   annotations:

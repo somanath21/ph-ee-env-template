@@ -44,7 +44,10 @@ ingress:
   tls:
   - hosts: "mojaloop.sandbox.mifos.io"
   - secretName: sandbox-secret
-  path: "/"
+  hosts:
+    - host: mojaloop.sandbox.mifos.io
+      paths:
+        - path: /
   backend:
     service:
       name: ph-ee-connector-mojaloop-java

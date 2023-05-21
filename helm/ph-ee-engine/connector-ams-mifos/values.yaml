@@ -38,7 +38,10 @@ ingress:
   tls:
   - hosts: "amsmifos.sandbox.mifos.io"
   - secretName: sandbox-secret
-  path: "/"
+  hosts:
+    - host: amsmifos.sandbox.mifos.io
+      paths:
+        - path: /
   backend:
     service:
       name: ph-ee-connector-ams-mifos

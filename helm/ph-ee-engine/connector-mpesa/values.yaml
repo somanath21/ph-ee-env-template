@@ -69,7 +69,10 @@ ingress:
   tls:
   - hosts: "mpesa.sandbox.mifos.io"
   - secretName: sandbox-secret 
-  path: "/"
+  hosts:
+    - host: mpesa.sandbox.mifos.io
+      paths:
+        - path: /
   backend:
     service:
       name: ph-ee-connector-mpesa
