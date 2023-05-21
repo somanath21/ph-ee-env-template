@@ -34,7 +34,7 @@ ingress:
   enabled: true
   className: ""
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    #kubernetes.io/ingress.class: "nginx"
   tls:
   - hosts: "amsmifos.sandbox.mifos.io"
   - secretName: sandbox-secret
