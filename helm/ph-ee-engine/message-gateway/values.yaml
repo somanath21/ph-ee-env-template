@@ -4,7 +4,7 @@ service:
 configmap:
   apiversion: "v1"
 
-enabled: true
+enabled: false
 image: ""
 imageTag: ""
 secret:

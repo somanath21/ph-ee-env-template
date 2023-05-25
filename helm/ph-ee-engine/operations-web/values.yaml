@@ -4,7 +4,7 @@ service:
 secret:
   apiversion: "v1"
 
-enabled: true
+enabled: false
 image: ""
 imageTag: ""
 SPRING_PROFILES_ACTIVE: "bb"
