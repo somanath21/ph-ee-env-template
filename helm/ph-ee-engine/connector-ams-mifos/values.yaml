@@ -28,21 +28,21 @@ limits:
 requests:
   cpu: "100m"
   memory: "256M"
-wildcardhostname: amsmifos.sandbox.mifos.io  
+wildcardhostname: ""  
 ingress:
-  apiversion: networking.k8s.io/v1
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-  tls:
-  - hosts: "amsmifos.sandbox.mifos.io"
-  - secretName: sandbox-secret
-  path: "/"
-  backend:
-    service:
-      name: ph-ee-connector-ams-mifos
-      port:
-        number: 80      
+  enabled: false
+  className: "nginx"
+  pathtype: ImplementationSpecific
+  annotations: {}
+  # kubernetes.io/ingress.class: "nginx"
+  hosts:
+    - host: ""
+      paths:
+        - path: "/"
+  #tls: []
+  #  - secretName: sandbox-secret
+  #    hosts:
+  #      - chart-example.local      
 deployment:
   apiVersion: "apps/v1"
   annotations:
