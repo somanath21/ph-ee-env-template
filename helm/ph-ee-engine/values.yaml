@@ -363,7 +363,12 @@ ph_ee_connector_ams_mifos:
   envFrom: [] 
   # - configMapRef:
   #     name: config-secret
-  extraEnvs: ""
+  extraEnvs:
+    - name: "ELASTICSEARCH_USERNAME"
+      valueFrom:
+        secretKeyRef:
+          name: elasticsearch-master-credentials
+          key: username
 # This is the PriorityClass settings as defined in
 # https://kubernetes.io/docs/concepts/configuration/pod-priority-preemption/#priorityclass  
   priorityClassName: "" 
@@ -397,7 +402,12 @@ ph_ee_connector_ams_mifos:
     envFrom: []
   # - configMapRef:
   #     name: config-secret
-    extraEnvs: ""
+    extraEnvs:
+      - name: "ELASTICSEARCH_USERNAME"
+        valueFrom:
+          secretKeyRef:
+            name: elasticsearch-master-credentials
+            key: username
   # - User that the container will execute as.
   # Not necessary to run as root (0) as the zeebeops Deployment use cases do not need access to Kubernetes Node internals
   # - Typically not necessarily unless running within environments such as OpenShift.

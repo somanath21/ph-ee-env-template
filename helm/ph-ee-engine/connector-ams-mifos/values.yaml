@@ -21,6 +21,12 @@ ams_local_auth_host : "https://fynams.sandbox.mifos.io"
 ams_local_loan_host : "https://fynams.sandbox.mifos.io/"
 dfspids: "gorilla,rhino"
 extraInitContainers: ""
+extraEnvs:
+  - name: ""
+    valueFrom:
+      secretKeyRef:
+        name: ""
+        key: ""
 ## tenants properties have been moved to fin12
 limits:
   cpu: "500m"
@@ -47,6 +53,12 @@ deployment:
   apiVersion: "apps/v1"
   annotations:
     deployTime: "{{ .Values.deployTime }}"
+  extraEnvs:
+    - name: ""
+      valueFrom:
+        secretKeyRef:
+          name: ""
+          key: "" 
 
 operations_app:
   datasource:
