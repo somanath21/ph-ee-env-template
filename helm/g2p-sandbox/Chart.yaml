@@ -8,4 +8,4 @@ appVersion: 0.0.0
 dependencies:
 - name: ph-ee-engine
   repository: https://fynarfin.io/images/ph-ee-engine-0.0.0-SNAPSHOT
-  version: 0.0.0-SNAPSHOT
+  version: 1.8.0-SNAPSHOT
