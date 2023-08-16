@@ -7,5 +7,5 @@ appVersion: 1.1.0
 
 dependencies:
 - name: ph-ee-engine
-  repository: https://fynarfin.io/images/ph-ee-engine/ph-ee-engine-1.9.0-SNAPSHOT.tgz
+  repository: https://fynarfin.io/images/ph-ee-engine/
   version: 1.9.0-SNAPSHOT
